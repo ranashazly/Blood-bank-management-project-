@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Login</title>
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login">
+    <div class="bg" id="bg"><b style="--x:8%;--y:12%;--z:340px;--t:11s"></b><b
+            style="--x:70%;--y:55%;--z:420px;--t:14s"></b><b style="--x:40%;--y:-8%;--z:280px;--t:9s"></b><i
+            style="--x:3%;--s:10px;--d:7s;--l:-0s;--c:#B4233D"></i><i
+            style="--x:8%;--s:17px;--d:12s;--l:-3s;--c:#8B1E35"></i><i
+            style="--x:13%;--s:24px;--d:9s;--l:-6s;--c:#DC2626"></i><i
+            style="--x:18%;--s:31px;--d:14s;--l:-9s;--c:#F27A8E"></i><i
+            style="--x:23%;--s:38px;--d:11s;--l:-1s;--c:#B4233D"></i><i
+            style="--x:28%;--s:13px;--d:8s;--l:-4s;--c:#8B1E35"></i><i
+            style="--x:33%;--s:20px;--d:13s;--l:-7s;--c:#DC2626"></i><i
+            style="--x:38%;--s:27px;--d:10s;--l:-10s;--c:#F27A8E"></i><i
+            style="--x:43%;--s:34px;--d:7s;--l:-2s;--c:#B4233D"></i><i
+            style="--x:48%;--s:41px;--d:12s;--l:-5s;--c:#8B1E35"></i><i
+            style="--x:53%;--s:16px;--d:9s;--l:-8s;--c:#DC2626"></i><i
+            style="--x:58%;--s:23px;--d:14s;--l:-0s;--c:#F27A8E"></i><i
+            style="--x:63%;--s:30px;--d:11s;--l:-3s;--c:#B4233D"></i><i
+            style="--x:68%;--s:37px;--d:8s;--l:-6s;--c:#8B1E35"></i><i
+            style="--x:73%;--s:12px;--d:13s;--l:-9s;--c:#DC2626"></i><i
+            style="--x:78%;--s:19px;--d:10s;--l:-1s;--c:#F27A8E"></i><i
+            style="--x:83%;--s:26px;--d:7s;--l:-4s;--c:#B4233D"></i><i
+            style="--x:88%;--s:33px;--d:12s;--l:-7s;--c:#8B1E35"></i><i
+            style="--x:93%;--s:40px;--d:9s;--l:-10s;--c:#DC2626"></i><i
+            style="--x:1%;--s:15px;--d:14s;--l:-2s;--c:#F27A8E"></i></div>
+    <form id="f" class="card login-box"><img src="img/logo.png" class="lg-img" alt="Blood Bank logo">
+        <h2>Blood Bank Management System</h2>
+        <label>Username<input id="u" autocomplete="username"></label><label>Password<input id="p" type="password"
+                autocomplete="current-password"></label>
+        <label class="chk"><input type="checkbox" onchange="p.type=this.checked?'text':'password'"> Show
+            password</label>
+        <p class="err" id="e"></p><button class="btn">Login</button>
+        <p class="muted" style="margin-top:14px">Demo account: <b>admin / admin123</b><br>
+        </p>
+    </form>
+    <script src="js/storage.js"></script>
+    <script>
+        f.onsubmit = e => {
+            e.preventDefault(); if (!u.value.trim() || !p.value) return e2('Enter your username and password.');
+            if (u.value == DB.admin.user && p.value == DB.admin.pass) { sessionStorage.admin = 1; location = 'index.html' } else e2('Wrong username or password.')
+        };
+        const e2 = m => document.getElementById('e').textContent = m;
+        // Subtle parallax: the background drifts opposite to the mouse.
+        addEventListener('mousemove', e => { bg.style.transform = `translate(${(e.clientX / innerWidth - .5) * -40}px,${(e.clientY / innerHeight - .5) * -40}px)` });</script>
+</body>
+
+</html>
